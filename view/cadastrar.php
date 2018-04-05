@@ -1,32 +1,36 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
     <head>
-        <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Plataforma Home</title>
+        <title>Plataforma - Cadastrar</title>
 
         <!-- CSS e Bootstrap -->
-        <link href="./view/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link href="/view/assets/css/bootstrap.css" rel="stylesheet" type="text/css"/>     
     </head>
     
     <body>
+        
         <!------------------------- MENU ------------------------------------->
         <nav class="navbar navbar-expand-md navbar navbar-dark bg-primary">
             <!-------------------------- LOGO ----------------------------->
-            <a class="navbar-brand" href="index.php"><img src="./view/img/logo.png" style="width: 100px"></a>
+            <a class="navbar-brand" href="index.php"><img src="/view/img/logo.png" style="width: 100px"></a>
 
             
 
             <ul class="navbar-nav mr-auto">
                 <!------------------------ ITEM 1 ------------------------->
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="/view/home.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <!------------------------ ITEM 2 ------------------------->
-                <li class="nav-item">
+                <li class="nav-item active">
                     <a class="nav-link" href="#">Cadastro <span class="sr-only"></span></a>
                 </li>
                 <!------------------------ ITEM 3 ------------------------->
@@ -44,47 +48,43 @@
             </form>
             
         </nav>
-
-        <br>
-        <div class="container">
-                    <br>
-                    <br>
-            <h2 class="text-center">Bem vindo ao Clik's</h2>
-            <?php
-            //se existir a mensagem 
-            if (isset($_SESSION['msg'])) {
-                //imprimi a mensagem 
-                echo $_SESSION['msg'];
-                //depois distrói a mensagem
-                unset($_SESSION['msg']);
-            }
-            ?>
-            <div class="row">
-                <div class="span12" style="text-align:center; margin: 0 auto;">
-                    <br>
-                    <form class="px-4 py-3" style="width: 400px; margin: 0 auto;" method="post" action="./controller/valida.php">
-                        <!-- <label>Usuário</label> -->
-                        <input type="text" name="usuario" placeholder="Digite seu usuário" class="form-control"><br>
-
-                        <!-- <label>Senha</label> -->
-                        <input type="password" name="senha" placeholder="Digite sua senha" class="form-control"><br>
-
-                        <input type="submit" name="btnLogin" value="Acessar" class="btn-block">
-
-                        <div class="text-center" style="margin-top: 20px;">
-                            Ainda não posui uma cadastro ? <br>
-                            <a href="./view/cadastrar.php"> Clique aqui e crie grátis</a>
-                        </div>
-                        
-                    </form>
-                    <br>
-                    <br>
-                </div>
-            </div>
-        </div>
         
+        <div class="container">
+            <div class="form-signin" style="background: #2e66ab;">
+                <h2>Cadastro de usuário</h2>
+                <?php
+                if (isset($_SESSION['msg'])) {
+                    echo $_SESSION['msg'];
+                    unset($_SESSION['msg']);
+                }
+                ?>
+                <form method="POST" action="">
+                    <!--<label>Nome</label>-->
+                    <input type="text" name="nome" placeholder="Digite o nome e o sobrenome" class="form-control"><br>
 
-    <!----------------------------------------- RODAPÉ ----------------------------------->
+                    <!--<label>E-mail</label>-->
+                    <input type="text" name="email" placeholder="Digite o seu e-mail" class="form-control"><br>
+
+                    <!--<label>Usuário</label>-->
+                    <input type="text" name="contato" placeholder="Digite seu contato" class="form-control"><br>
+
+                    <!--<label>Senha</label>-->
+                    <input type="password" name="senha" placeholder="Digite a senha" class="form-control">
+
+                    <p align="center"><strong>Se quiser ofertar algum serviço selecione a caixa abaixo!</strong></p>
+                    
+                    <!-- opção para vender serviços -->
+                    <p><label class="checkbox-inline"><input type="checkbox" name="opcaoVender" value="">Quero oferecer meus serviços</label></p>
+
+                    <input type="submit" name="btnCadUsuario" value="Cadastrar" class="btn-block"><br><br>
+
+                    <div class="row text-center" style="margin-top: 20px;"> 
+                        Voltar ? <a href="../index.php" style="color: #000">Clique aqui</a> para logar
+                    </div>
+                </form>
+            </div>
+                        
+        </div><!----------------------------------------- RODAPÉ ----------------------------------->
     <div class="card-group bg-primary">
         
         <!------------------------------------- BLOCO 1 ----------------------------------->
